@@ -7,12 +7,12 @@
 		<title>Countdown</title>
 	</head>
 	<body>
-		<h1>Days until Christmas 2025</h1>
+		<h1>Days until we all become pure raw data</h1>
 		<p style="font-family: sans-serif; font-size: 36px" id="time"></p>
 
 		<script>
 			// Date when want to countdown to
-			const countDownDate = new Date('Dec 25, 2025 12:00:00').getTime()
+			const countDownDate = new Date('Dec 25, 2050 12:30:00').getTime()
 
 			// Setting an interval of 1000 to have a change each second
 			setInterval(() => {
@@ -26,17 +26,23 @@
 				const hours = Math.floor(
 					(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
 				)
-				const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+				let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
 				const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+				// Putting a 0 in front of minutes when it gets below 10
+
+				if (minutes.toString().length <= 1) {
+					minutes = '0' + minutes
+				}
 
 				// Print the result on the p tag
 				document.getElementById('time').innerHTML =
-					days + ' days ' + hours + ':' + minutes + ':' + seconds
+					days + ' days, ' + hours + ':' + minutes + ':' + seconds + ' left'
 
 				// When the countdown is finished, write some text
 				if (distance <= 0) {
 					clearInterval()
-					document.getElementById('time').innerHTML = 'Merry Christmas'
+					document.getElementById('time').innerHTML = 'Un shac?'
 				}
 			}, 1000)
 
